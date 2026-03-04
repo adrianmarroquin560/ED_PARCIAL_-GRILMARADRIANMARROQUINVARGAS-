@@ -40,3 +40,45 @@ public class Main {
                     fw.write(String.format("Fibonacci,Recursivo,%d,NA%n", n));
                 }
             }
+
+            int[] nsLinealBurbuja = {100, 500, 1000, 5000, 10000};
+            for (int n : nsLinealBurbuja) {
+                int[] base = GeneradorDatos.generarArregloAleatorio(n, n * 10);
+                int target = base[n / 2];
+
+                final int[] copiaBuscarIter = GeneradorDatos.clonar(base);
+                double tBuscarIter = Medidor.medirPromedioMillis(() ->
+                        BusquedaLineal.buscarIterativo(copiaBuscarIter, target));
+                System.out.println("Medición: BusquedaLineal Iterativo n=" + n + " tiempo=" + tBuscarIter);
+                fw.write(String.format("BusquedaLineal,Iterativo,%d,%.6f%n", n, tBuscarIter));
+
+                final int[] copiaBuscarRec = GeneradorDatos.clonar(base);
+                double tBuscarRec = Medidor.medirPromedioMillis(() ->
+                        BusquedaLineal.buscarRecursivo(copiaBuscarRec, target));
+                System.out.println("Medición: BusquedaLineal Recursivo n=" + n + " tiempo=" + tBuscarRec);
+                fw.write(String.format("BusquedaLineal,Recursivo,%d,%.6f%n", n, tBuscarRec));
+
+                final int[] copiaBurbujaIter = GeneradorDatos.clonar(base);
+                double tBurbujaIter = Medidor.medirPromedioMillis(() -> {
+                    OrdenamientoBurbuja.burbujaIterativo(copiaBurbujaIter);
+                });
+                System.out.println("Medición: Burbuja Iterativo n=" + n + " tiempo=" + tBurbujaIter);
+                fw.write(String.format("Burbuja,Iterativo,%d,%.6f%n", n, tBurbujaIter));
+
+                final int[] copiaBurbujaRec = GeneradorDatos.clonar(base);
+                double tBurbujaRec = Medidor.medirPromedioMillis(() -> {
+                    OrdenamientoBurbuja.burbujaRecursivo(copiaBurbujaRec);
+                });
+                System.out.println("Medición: Burbuja Recursivo n=" + n + " tiempo=" + tBurbujaRec);
+                fw.write(String.format("Burbuja,Recursivo,%d,%.6f%n", n, tBurbujaRec));
+            }
+
+            System.out.println("Mediciones completadas. Archivo: resultados/tiempos.csv");
+
+        } catch (IOException e) {
+            System.err.println("Error escribiendo resultados: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}
+
