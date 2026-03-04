@@ -1,0 +1,7 @@
+﻿out/
+*.class
+resultados/
+*.csv
+*.xlsx
+.vscode/
+.idea/
