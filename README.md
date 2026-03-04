@@ -25,3 +25,5 @@ PowerShell o terminal de Windows.
 Recomiendo JDK 17 para compatibilidad.
 
 luego de descargar el proyecto de la run desde main para ver los resultados que darian los tiempos mas que todo para tomar esa nota y subirla al excel el codigo lo pudes modificar y poner otros tiepos de numero para hacer mas pruebas pero solo se colocaron las que me solicitarion 
+
+Tambien pongo el link del video con la explicacion de lo realizado y lo que me estan solicitado: https://youtu.be/5myJTRzTLcg
